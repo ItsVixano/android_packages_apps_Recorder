@@ -74,6 +74,8 @@ dependencies {
     // Recyclerview
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.recyclerview:recyclerview-selection:1.1.0")
+
+    debugImplementation(libs.leakcanary.android)
 }
 
 configure<GenerateBpPluginExtension> {
