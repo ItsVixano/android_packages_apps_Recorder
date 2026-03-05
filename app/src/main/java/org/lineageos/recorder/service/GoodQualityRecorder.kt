@@ -22,8 +22,12 @@ class GoodQualityRecorder(private val context: Context) : SoundRecording {
         recorder = MediaRecorder(context).apply {
             setOutputFile(file)
             setAudioSource(MediaRecorder.AudioSource.DEFAULT)
-            setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
-            setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
+            setOutputFormat(MediaRecorder.OutputFormat.OGG)
+            setAudioEncoder(MediaRecorder.AudioEncoder.OPUS)
+
+            setAudioSamplingRate(48000)
+            setAudioEncodingBitRate(32000)
+
             prepare()
             start()
         }
@@ -74,7 +78,7 @@ class GoodQualityRecorder(private val context: Context) : SoundRecording {
     override val currentAmplitude: Int
         get() = recorder?.maxAmplitude ?: 0
 
-    override val fileExtension = "m4a"
+    override val fileExtension = "ogg"
 
-    override val mimeType = "audio/mp4a-latm"
+    override val mimeType = "audio/opus"
 }
